@@ -8,7 +8,40 @@ author: rumpole82
 
 ```r
 library(dplyr)
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+## 
+## The following objects are masked from 'package:plyr':
+## 
+##     arrange, count, desc, failwith, id, mutate, rename, summarise,
+##     summarize
+## 
+## The following object is masked from 'package:stats':
+## 
+##     filter
+## 
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
 library(lubridate)
+```
+
+```
+## 
+## Attaching package: 'lubridate'
+## 
+## The following object is masked from 'package:plyr':
+## 
+##     here
+```
+
+```r
 library(lattice)
 activity.csv <- unzip("activity.zip")
 data <- read.csv("activity.csv", stringsAsFactors=FALSE)
@@ -143,12 +176,12 @@ f <- subset(wday, wday$day=="weekend")
 g <- subset(wday, wday$day=="weekday")
 fmeans <- aggregate(steps ~ interval, f, mean)
 gmeans <- aggregate(steps ~ interval, g, mean)
-fmeans <- mutate(fmeans, day="weekday")
-gmeans <- mutate(gmeans, day="weekend")
+fmeans <- mutate(fmeans, day="weekend")
+gmeans <- mutate(gmeans, day="weekday")
 end <- rbind(fmeans, gmeans)
 xyplot(steps ~ interval | day, data=end, type="l", layout=c(1,2))
 ```
 
 ![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
 
-There does seem to be a little difference.  It seems people walk around earlier in the morning on the weekends (between 600 and 800, or 6 and 8 AM) than on the weekdays, maybe they get up and go for a walk instead of sitting at their desk at work.  Also, perhaps they are a little more sedentary in the afternoon (after 1200, or 12 PM) on the weekends.
+There does seem to be a little difference.  People walk around earlier in the morning on the weekdays (between 600 and 800, or 6 and 8 AM).  Also, they are more sedentary in the afternoon (after 1200, or 12 PM) on the weekdays, probably sitting at their desks, when on the weekends people seem to be more active overall.
