@@ -18,7 +18,8 @@ data <- read.csv("activity.csv", stringsAsFactors=FALSE)
 #find the sum of steps for each day.
 sums <- aggregate(steps ~ date, data, sum)
 #make a histogram of the average number of steps taken each day.
-hist(sums$steps, ylab="frequency", xlab="steps per day", main="total number of steps per day")
+hist(sums$steps, ylab="frequency", xlab="steps per day", 
+     main="total number of steps per day")
 ```
 
 ###2) Calculate and report the mean and median total number of steps taken per day.
@@ -39,7 +40,8 @@ plot(mspi$interval, mspi$steps, type="l", xlab="interval", ylab="average steps o
 ```{r}
 mspi[which(mspi$steps == max(mspi$steps)),]
 ```
-##Impute missing values.
+##Impute missing values. 
+My strategy for imputing missing values is to replace the missing values with the average number of steps for that interval averaged over all days of the data set for which values exist.
 ###1) Calculate and report the total number of missing values in the data set.
 ```{r}
 rows_with_missing_values <- data[which(is.na(data$steps)),]
