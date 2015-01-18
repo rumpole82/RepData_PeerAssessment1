@@ -1,0 +1,250 @@
+my_seq(5, 10, length=30)
+my_seq <- seq(5, 10, length=30)
+length(my_seq)
+1:length(my_seq)
+seq(along.with = my_seq)
+my_seq
+seq_along(my_seq)
+rep(0, times=40)
+rep(c(0,1,2), times=10)
+rep(c(0,1,2), each=10)
+num_vect <- c(0.5,55,-10,6)
+num_vect
+tf <- num_vect <1
+tf
+num_vect >= 6
+c("My","name", "is")
+my_char <- c("My", "name", "is")
+my_char
+paste(my_char, collapse = " ")
+c(my_char, "rumpole82")
+my_name <- c(my_char, "rumpole82")
+my_name
+paste(my_name, collapse =" ")
+paste("Hello", "world!", sep = " ")
+paste()
+paste("Hello", "world!")
+paste(1:3, c("X", "Y", "Z"))
+paste(1:3, c("X", "Y", "Z"), sep="")
+paste(LETTERS, 1:14, sep="-")
+paste(LETTERS, 1:4, sep="-")
+x <- c(44,NA,5,NA)
+x * 3
+y <- rnorm(1000)
+z <- rep(NA, 1000)
+my_data <- sample(c(y,z), 100)
+my_na <- is.na(my_data)
+my_na
+my_data == NA
+is_na(my_na)
+is.na(my_na)
+is.na(my_data)
+?is.na
+?along.with
+sum(my_NA)
+sum(my_na)
+my_data
+0/0
+Inf - Inf
+x
+x[1:10]
+x[is.na(x)]
+is.na(x)
+x[is.na(x)]
+q <- is.na(x)
+q
+x[q]
+y <- x[!is.na(x)]
+y
+y[y >0]
+?[]
+?`[]`
+??`[]`
+x[x >0]
+x[!is.na(x) & x>0]
+x <- c(3,5,7)
+x[c(3,5,7)]
+x[0]
+x[3000]
+x[(-2,10)]
+x[c(-2,-10)]
+x[-c(2,10)]
+vect <- c(foo=11, bar=2, norf=NA)
+vect
+names(vect)
+vect <- c(11,2,NA)
+vect2 <-c(11,2,NA)
+names(vect2) <- c("foo", "bar", )
+names(vect2) <- c("foo", "bar", "norf")
+identical(vect, vect2)
+vect["bar"]
+vect[c("foo", "bar")]
+my_vector <- 1:20
+x < 4L
+class(x)
+my_vector
+dim(my_vector)
+length(my_vector)
+dim(my_vector) <- c(4,5)
+dim(my_vector)
+attributes(my_vector)
+my_vector
+class(my_vector)
+my_matrix <- my_vector
+?matrix
+my_matrix2 <- matrix(1:2, 4, 5)
+my_matrix2 <- matrix(1:20, 4, 5)
+identical(my_matrix, my_matrix2)
+patients <- c("Bill", "Gina", "Kelly")
+patients <- c("Bill", "Gina", "Kelly", "Sean")
+cbind(patients, my_matrix)
+data.frame(patients, my_matrix)
+my_data <- data.frame(patients, my_matrix)
+?cbind
+data <- rbind("w", "h","f","d")
+data
+data.frame(data, my_matrix)
+my_data
+class(my_data)
+cnames <- c("patient","age","weight","bp","rating","test")
+colnames(cnames)
+colnames(may_data) <- cnames
+colnames(my_data) <- cnames
+my_data
+ls()
+rm q
+rm "q"
+class(plants)
+dim(plants)
+nrow(plants)
+ncol(plants)
+object.size(plants)
+names(plants)
+head(plants)
+head(plants, 10)
+tail(plants, 15)
+summary(plants)
+table(plants$Active_Growth_Period)
+str(plants)
+TRUE == TRUE
+(FALSE == TRUE == FALSE)
+(FALSE == TRUE) == FALSE
+6 == 7
+6 < 7
+10 <= 10
+5!=7
+!5=7
+!5!=7
+!5 == 7
+FALSE & FALSE
+TRUE & C(TRUE, FALSE, FALSE)
+TRUE & c(TRUE, FALSE, FALSE)
+TRUE && c(TRUE, FALSE, FALSE)
+TRUE | c(TRUE, FALSE, FALSE)
+TRUE || c(TRUE, FALSE, FALSE)
+5 > 8 || !=8 && 4>3.9
+5 > 8 || != 8 && 4>3.9
+5 > 8 || 6 != 8 && 4 > 3.9
+isTRUE(6>4)
+identical('twins', 'twins')
+xor(5 == 6, !FALSE)
+ints <- sample(10)
+ints
+ints > 5
+which(ints > 7)
+any(ints <0)
+all(ints>0)
+head(flags)
+dim(flags)
+viewinfo(flags)
+?viewinfo
+class(flags)
+as.list(flags)
+cls_list <- lapply(flags, class)
+cls_list
+class(cls_list)
+as.character(cls_list)
+cls_vect <- sapply(flags, class)
+cls_vect
+class(cls_vect)
+sum(flags$orange)
+flag_colors <- flags[,11:17]
+head(flag_colors)
+lapply(flag_colors, sum)
+sapply(flag_colors, sum)
+sapply(flag_colors, mean)
+flag_shapes <- flags[,19:23]
+lapply(flag_shapes, range)
+shape_mat <- sapply(flag_shapes, range)
+shape_mat
+class(shape_mat)
+unique(c(3,4,5,5,5,6,6))
+unique_vals <- lapply(flags, unique)
+unique_vals
+length(unique_vals)
+sapply(unique_vals, length)
+sapply(flags, unique)
+lapply(unique_vals, function(elem) elem[2])
+sapply(flags,unique)
+library(swirl)
+swirl()
+vapply(flags, unique, numeric(1))
+ok()
+sapply(flags,class)
+vapply(flags, class, character(1))
+?tapply
+table(flags$landmass)
+table(flags$animate)
+tapply(flags$animate, flags$landmass, mean)
+table(flags$landmass,flags$animate, mean)
+table(flags$animate,flags$landmass, mean)
+tapply(flags$landmass, flags$animate, mean)
+tapply(flags$population, flags$red, summary)
+tapply((flags$animate, flags$landmass, mean))
+tapply(flags$animate,flags$landmass, mean)
+tapply(flags$population,flags$landmass, summary)
+getwd()
+ls
+?ls
+Q
+c
+x <- 0
+Q
+getwd()
+library(swirl)
+install_from_swirl("Getting and Cleaning Data")
+swirl()
+bye
+bye()
+swirl()
+install.packages("swirl")
+library(swirl)
+swirl()
+sapply(flags,unique)
+vapply(flags, unique,numeric(1))
+ok()
+sapply(flags, class)
+vapply(flags, class, character(1))
+?tapply
+bye()
+install.packages("swirl")
+library(swirl)
+swirl()
+main()
+?read.csv
+install.packages("swirl")
+library(swirl)
+ls
+ls()
+rm(list=ls())
+ls()
+swirl()
+install.packages("dplyr")
+library(dplyr)
+?unzip
+dir()
+unzip("activity.zip")
+dir()
+read.csv(activity)
+x <- read.csv(activity.csv)
+dir()
