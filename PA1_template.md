@@ -8,22 +8,6 @@ author: rumpole82
 
 ```r
 library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-## 
-## The following object is masked from 'package:stats':
-## 
-##     filter
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 library(lubridate)
 library(lattice)
 activity.csv <- unzip("activity.zip")
@@ -36,7 +20,8 @@ data <- read.csv("activity.csv", stringsAsFactors=FALSE)
 #find the sum of steps for each day.
 sums <- aggregate(steps ~ date, data, sum)
 #make a histogram of the average number of steps taken each day.
-hist(sums$steps, ylab="frequency", xlab="steps per day", main="total number of steps per day")
+hist(sums$steps, ylab="frequency", xlab="steps per day", 
+     main="total number of steps per day")
 ```
 
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
@@ -80,7 +65,8 @@ mspi[which(mspi$steps == max(mspi$steps)),]
 ##     interval    steps
 ## 104      835 206.1698
 ```
-##Impute missing values.
+##Impute missing values. 
+My strategy for imputing missing values is to replace the missing values with the average number of steps for that interval averaged over all days of the data set for which values exist.
 ###1) Calculate and report the total number of missing values in the data set.
 
 ```r
