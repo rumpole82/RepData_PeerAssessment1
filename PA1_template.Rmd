@@ -93,10 +93,10 @@ f <- subset(wday, wday$day=="weekend")
 g <- subset(wday, wday$day=="weekday")
 fmeans <- aggregate(steps ~ interval, f, mean)
 gmeans <- aggregate(steps ~ interval, g, mean)
-fmeans <- mutate(fmeans, day="weekday")
-gmeans <- mutate(gmeans, day="weekend")
+fmeans <- mutate(fmeans, day="weekend")
+gmeans <- mutate(gmeans, day="weekday")
 end <- rbind(fmeans, gmeans)
 xyplot(steps ~ interval | day, data=end, type="l", layout=c(1,2))
 ```
 
-There does seem to be a little difference.  It seems people walk around earlier in the morning on the weekends (between 600 and 800, or 6 and 8 AM) than on the weekdays, maybe they get up and go for a walk instead of sitting at their desk at work.  Also, perhaps they are a little more sedentary in the afternoon (after 1200, or 12 PM) on the weekends.
+There does seem to be a little difference.  People walk around earlier in the morning on the weekdays (between 600 and 800, or 6 and 8 AM).  Also, they are more sedentary in the afternoon (after 1200, or 12 PM) on the weekdays, probably sitting at their desks, when on the weekends people seem to be more active overall.
