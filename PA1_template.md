@@ -1,4 +1,7 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+author: rumpole82
+---
 
 
 ##Loading and preprocessing the data:
@@ -27,18 +30,18 @@ activity.csv <- unzip("activity.zip")
 data <- read.csv("activity.csv", stringsAsFactors=FALSE)
 ```
 ##What is mean total number of steps taken per day?
-1) Histogram of total number of steps taken per day.
+###1) Histogram of total number of steps taken per day.
 
 ```r
 #find the sum of steps for each day.
 sums <- aggregate(steps ~ date, data, sum)
 #make a histogram of the average number of steps taken each day.
-hist(sums$steps, xlab="steps per day", main="histogram of total number of steps per day")
+hist(sums$steps, ylab="frequency", xlab="steps per day", main="total number of steps per day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
 
-2) Calculate and report the mean and median total number of steps taken per day.
+###2) Calculate and report the mean and median total number of steps taken per day.
 
 ```r
 mean(sums$steps)
@@ -56,18 +59,18 @@ median(sums$steps)
 ## [1] 10765
 ```
 ##What is the average daily activity pattern? 
-1) Make a line plot of interval vs. average number of steps taken per interval over all the days in the data set.
+###1) Make a line plot of interval vs. average number of steps taken per interval over all the days in the data set.
 
 ```r
 #find mean of steps per interval.
 mspi <- aggregate(steps ~ interval, data, mean)
 #make the plot.
-plot(mspi$interval, mspi$steps, type="l")
+plot(mspi$interval, mspi$steps, type="l", xlab="interval", ylab="average steps over all days", main="line plot of average steps per interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
-2) Find the 5 minute interval which, on average across all the days of the data set, contains the maximimum number of steps.
+###2) Find the 5 minute interval which, on average across all the days of the data set, contains the maximimum number of steps.
 
 ```r
 mspi[which(mspi$steps == max(mspi$steps)),]
@@ -78,7 +81,7 @@ mspi[which(mspi$steps == max(mspi$steps)),]
 ## 104      835 206.1698
 ```
 ##Impute missing values.
-1) Calculate and report the total number of missing values in the data set.
+###1) Calculate and report the total number of missing values in the data set.
 
 ```r
 rows_with_missing_values <- data[which(is.na(data$steps)),]
@@ -89,13 +92,13 @@ number_missing
 ```
 ## [1] 2304
 ```
-2) Fill the missing values with the mean for that day.
+###2) Fill the missing values with the mean for that day.
 
 ```r
 #find the mean of steps for each interval.
 means <- aggregate(steps ~ interval, data, mean)
 ```
-3) Create a new dataset equal to original with missing data filled in.
+###3) Create a new dataset equal to original with missing data filled in.
 
 ```r
 #add a column of interval means to the original data set.
@@ -109,18 +112,16 @@ new_data <- select(merged, interval, steps.x, date)
 #assign original column names to new data set.
 names(new_data) <- c("interval", "steps", "date")
 ```
-4) Make a histogram of total number of steps taken per day using the new data set and
-calculate and report the mean and median total number of steps taken
-per day using the new data set.
+###4) Make a histogram of total number of steps taken per day using the new data set and calculate and report the mean and median total number of steps taken per day using the new data set.
 
 ```r
 #find the sum of steps for each day.
 new_sums <- aggregate(steps ~ date, new_data, sum)
 #make a histogram of the average number of steps taken each day.
-hist(new_sums$steps, xlab="steps per day", main="histogram of total number of steps per day")
+hist(new_sums$steps, ylab="frequency", xlab="steps per day", main="total number of steps per day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
 
 ```r
 mean(new_sums$steps)
@@ -162,4 +163,6 @@ end <- rbind(fmeans, gmeans)
 xyplot(steps ~ interval | day, data=end, type="l", layout=c(1,2))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
+
+There does seem to be a little difference.  It seems people walk around earlier in the morning on the weekends (between 600 and 800, or 6 and 8 AM) than on the weekdays, maybe they get up and go for a walk instead of sitting at their desk at work.  Also, perhaps they are a little more sedentary in the afternoon (after 1200, or 12 PM) on the weekends.
